@@ -1,0 +1,26 @@
+@font-face {
+  font-family: SFPro;
+  src: url("../../assets/fonts/SFPro/SFPRODISPLAYBOLD.OTF");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.fitImageNavbar {
+  width: 173px;
+  height: 70px;
+}
+
+.fitImageNavbar > img {
+  height: 100%;
+  width: 100%;
+}
+
+.textNavbar > li a {
+  color: #fff;
+  font-size: 1.25rem;
+  font-family: "SFPro";
+}
