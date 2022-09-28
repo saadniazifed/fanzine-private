@@ -1,0 +1,33 @@
+.overflowScrollX {
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
+.cricketCardContainer {
+    max-height: 475px;
+    background-color: black;
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.cricketCards {
+    min-width: 475px;
+    height: 250px;
+    background-color: #454545;
+}
+
+.cricketTeamLogo {
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+}
+
+.cricketTimeBorder {
+    height: 76px;
+    width: 130px;
+    border: 2px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

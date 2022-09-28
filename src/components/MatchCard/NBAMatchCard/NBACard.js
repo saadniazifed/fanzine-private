@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 import { Container, Row, Col } from 'react-bootstrap';
+import styles from 'components/MatchCard/NBAMatchCard/NBACard.module.css'
 
 const NBAMatchCard = () => {
     const [nbaCard, setNBACard] = useState([]);
@@ -20,27 +21,14 @@ const NBAMatchCard = () => {
     }, []);
 
     return (
-        <Container style={{
-            width: "475px",
-            height: "250px",
-            backgroundColor: "#28282B",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            color: "white"
-        }}>
-            <Container style={{
-                backgroundColor: "#28282B",
-                width: "475px",
-                height: "250px",
-                color: "white"
-            }}>
+        <Container className={`${styles.nbaContainer}`}>
+            <Container className={`${styles.nbaDataContainer}`}>
                 {
                     nbaCard.map((data) => (
                         data.matches.map(nbaData => {
                             return (
                                 <>
-                                    <Container className='d-flex flex-column mt-2' >
+                                    <Container className='d-flex flex-column mt-2' key={nbaData.id} >
                                         <Container>
 
                                             <Row className='pt-2 mt-4'>
@@ -56,20 +44,18 @@ const NBAMatchCard = () => {
                                             <Row className='d-flex flex-column justify-content-center align-content-center text-center'
                                             >
                                                 <Col>
-                                                    <img src={nbaData.local_team.icon} alt="local-team-icon" style={{ width: "50px", height: "50px" }} />
+                                                    <img src={nbaData.local_team.icon} alt="local-team-icon" className={`${styles.nbaIconSize}`} />
                                                 </Col>
                                                 <Col>
                                                     <p>{nbaData.local_team.name}</p>
                                                 </Col>
                                             </Row>
-                                            <Row style={{ width: "150px", height: "90px", border: "2px solid white" }}
-                                                className="ps-1 d-flex text-center align-items-center justify-content-center"
-                                            >
+                                            <Row className={`ps-1 d-flex text-center align-items-center justify-content-center ${styles.nbaTimeBorder}`}>
                                                 {nbaData.datetime.slice(10)}
                                             </Row>
                                             <Row className='d-flex flex-column justify-content-center align-content-center text-center me-3'>
                                                 <Col>
-                                                    <img src={nbaData.visitor_team.icon} alt="local-team-icon" style={{ width: "50px", height: "50px" }} />
+                                                    <img src={nbaData.visitor_team.icon} alt="local-team-icon" className={`${styles.nbaIconSize}`} />
                                                 </Col>
                                                 <Col>
                                                     <p>{nbaData.visitor_team.name}</p>

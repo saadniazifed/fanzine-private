@@ -1,3 +1,4 @@
+import Ads from 'components/Ads/Ads'
 import CricketMatchCard from 'components/MatchCard/CricketMatchCard/CricketMatchCard'
 import FootballMatchCard from 'components/MatchCard/FootballMatchCard/FootballMatchCard'
 import NBAMatchCard from 'components/MatchCard/NBAMatchCard/NBACard'
@@ -13,12 +14,18 @@ const Home = () => {
         <>
             <FootballNews />
             <FootballMatchCard />
+            <Ads />
             <CricketNews />
             <CricketMatchCard />
+            <Ads />
             <MLBNews />
+            <Ads />
             <NBANews />
             <NBAMatchCard />
+            <Ads />
             <NFLNews />
+            <Ads />
+
         </>
     )
 }

@@ -1,0 +1,27 @@
+.nbaContainer {
+    width: 475px;
+    height: 250px;
+    background-color: #28282B;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.nbaDataContainer {
+    background-color: #28282B;
+    width: 475px;
+    height: 250px;
+    color: white;
+}
+
+.nbaIconSize {
+    width: 50px;
+    height: 50px;
+}
+
+.nbaTimeBorder {
+    width: 150px;
+    height: 90px;
+    border: 2px solid white;
+}

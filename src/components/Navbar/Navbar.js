@@ -14,14 +14,14 @@ function FanzineNavbar() {
         </Navbar.Brand>
 
         <Navbar.Toggle id="basic-navbar-nav"></Navbar.Toggle>
-        <Nav className=" ms-auto flex-grow-1 justify-content-around">
-          <Nav.Link href="#">Football</Nav.Link>
-          <Nav.Link href="#">Cricket</Nav.Link>
-          <Nav.Link href="#">NFL</Nav.Link>
-          <Nav.Link href="#">NBA</Nav.Link>
-          <Nav.Link href="#">MLB</Nav.Link>
-          <Nav.Link href="#">NFTs</Nav.Link>
-          <Nav.Link href="#">Contact</Nav.Link>
+        <Nav className={`ms-auto justify-content-end`} >
+          <Nav.Link href="#" className="text-white">Football</Nav.Link>
+          <Nav.Link href="#" className="text-white">Cricket</Nav.Link>
+          <Nav.Link href="#" className="text-white">NFL</Nav.Link>
+          <Nav.Link href="#" className="text-white">NBA</Nav.Link>
+          <Nav.Link href="#" className="text-white">MLB</Nav.Link>
+          <Nav.Link href="#" className="text-white">NFTs</Nav.Link>
+          <Nav.Link href="#" className="text-white">Contact</Nav.Link>
         </Nav>
       </Container>
     </Navbar>

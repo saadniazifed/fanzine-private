@@ -21,43 +21,18 @@ const FootballMatchCard = () => {
             });
     }, []);
 
-    const overlayStyle = {
-        position: 'absolute',
-        backgroundColor: 'rgba(0, 0, 0, 0.5)',
-        padding: '5px 15px',
-        color: 'white',
-        borderRadius: 3,
-    }
 
     return (
 
-        <Container fluid style={{
-            maxHeight: "475px",
-            backgroundColor: "black",
-            display: "flex",
-            gap: "10px",
-            marginTop: "10px",
-            marginBottom: "5rem"
-        }}
-            className={styles.overflowScrollX}
+        <Container fluid className={`${styles.overflowScrollX} ${styles.footballCardContainer}`}
         >
             {
                 footballMatch.map(data => {
                     return (
-                        <Card style={{
-                            minWidth: "475px",
-                            height: "250px",
-                        }}>
+                        <Card className={`${styles.matchCards}`} key={data.id}>
                             <Card.Img variant='top' src={data.venue.stadium_image} />
-                            <Card.ImgOverlay style={overlayStyle}>
-                                <Container style={{
-                                    height: "100%",
-                                    display: "flex",
-                                    flexDirection: "column",
-                                    justifyContent: "center",
-                                    alignItems: "center"
-                                }}
-                                >
+                            <Card.ImgOverlay className={`${styles.imageOverlay}`} >
+                                <Container className='h-100 d-flex flex-column justify-content-center align-items-center'>
                                     <Row>
                                         <Col>
                                             <Card.Text>
@@ -65,42 +40,22 @@ const FootballMatchCard = () => {
                                             </Card.Text>
                                         </Col>
                                     </Row>
-                                    <Row style={{
-                                        display: "flex",
-                                        alignItems: "center"
-                                    }}>
+                                    <Row className="d-flex align-items-center">
                                         <Col className='d-flex flex-column align-items-center'>
-                                            <img src={data.home_team.club_logo}
-                                                style={{
-                                                    width: "25px",
-                                                    height: "25px"
-                                                }}
-                                            />
-
+                                            <img src={data.home_team.club_logo} className={`${styles.clubLogoSize}`} />
                                             <Card.Text>
                                                 {data.home_team.name}
                                             </Card.Text>
                                         </Col>
 
-                                        <Col style={{
-                                            width: "150px",
-                                            height: "66px",
-                                            border: "1px solid white",
-                                            display: "flex",
-                                            alignItems: "center",
-                                            justifyContent: "center"
-                                        }}>
+                                        <Col className={`${styles.matchBeginsBorder}`}>
                                             <Card.Text>
                                                 {data.time_begin}
                                             </Card.Text>
                                         </Col>
 
                                         <Col className='d-flex flex-column align-items-center'>
-                                            <img src={data.guest_team.club_logo}
-                                                style={{
-                                                    width: "25px",
-                                                    height: "25px"
-                                                }}
+                                            <img src={data.guest_team.club_logo} className={`${styles.clubLogoSize}`}
                                             />
                                             <Card.Text>
                                                 {data.guest_team.name}

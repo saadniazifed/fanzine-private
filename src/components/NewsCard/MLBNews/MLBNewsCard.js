@@ -42,14 +42,19 @@ export default function MLBNews() {
                             {mlbNews.map((news, index) => (
                                 index === 0 ?
                                     (
-                                        <Card>
+                                        <Card key={news.id}>
                                             <Card.Img variant="top" src={news.image} />
-                                            <Card.ImgOverlay className="d-flex align-items-end" style={overlayStyle}>
-                                                {news.title}
+                                            <Card.ImgOverlay className="d-flex justify-content-end flex-column" style={overlayStyle}>
+                                                <Card.Text>{news.title}</Card.Text>
                                                 <br />
-                                                {news.publisher.name}
-                                                <br />
-                                                {news.datetime}
+                                                <Row className='d-flex justify-content-between'>
+                                                    <Col>
+                                                        {news.publisher.name}
+                                                    </Col>
+                                                    <Col>
+                                                        {news.datetime}
+                                                    </Col>
+                                                </Row>
                                             </Card.ImgOverlay>
                                         </Card>
                                     ) : ""
@@ -64,15 +69,20 @@ export default function MLBNews() {
                                     index === 1 ?
                                         (
                                             <>
-                                                <Col md={7} style={{ width: "100%", color: "white" }}>
+                                                <Col md={7} style={{ width: "100%", color: "white" }} key={news.id}>
                                                     <Card>
                                                         <Card.Img variant="top" src={news.image} />
-                                                        <Card.ImgOverlay className='d-flex align-items-end' style={overlayStyle}>
-                                                            {news.title}
+                                                        <Card.ImgOverlay className="d-flex justify-content-end flex-column" style={overlayStyle}>
+                                                            <Card.Text>{news.title}</Card.Text>
                                                             <br />
-                                                            {news.publisher.name}
-                                                            <br />
-                                                            {news.datetime}
+                                                            <Row className='d-flex justify-content-between'>
+                                                                <Col>
+                                                                    {news.publisher.name}
+                                                                </Col>
+                                                                <Col>
+                                                                    {news.datetime}
+                                                                </Col>
+                                                            </Row>
                                                         </Card.ImgOverlay>
                                                     </Card>
                                                 </Col>
@@ -81,17 +91,21 @@ export default function MLBNews() {
                                         ) : index === 2 ? (
                                             <Col md={7}
                                                 style={{ width: "100%" }}
+                                                key={news.id}
                                             >
                                                 <Card>
                                                     <Card.Img variant="top" src={news.image} />
-                                                    <Card.ImgOverlay className='d-flex align-items-end'
-                                                        style={overlayStyle}>
-
-                                                        {news.title}
+                                                    <Card.ImgOverlay className="d-flex justify-content-end flex-column" style={overlayStyle}>
+                                                        <Card.Text>{news.title}</Card.Text>
                                                         <br />
-                                                        {news.publisher.name}
-                                                        <br />
-                                                        {news.datetime}
+                                                        <Row className='d-flex justify-content-between'>
+                                                            <Col>
+                                                                {news.publisher.name}
+                                                            </Col>
+                                                            <Col>
+                                                                {news.datetime}
+                                                            </Col>
+                                                        </Row>
                                                     </Card.ImgOverlay>
                                                 </Card>
                                             </Col>
@@ -108,43 +122,58 @@ export default function MLBNews() {
                                 {mlbNews.map((news, index) => (
                                     index === 3 ?
                                         (
-                                            <Col className='mt-4 col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 text-white '>
-                                                <Card className='align-items-end'>
+                                            <Col key={news.id}>
+                                                <Card>
                                                     <Card.Img variant="top" src={news.image} />
-                                                    <Card.ImgOverlay className='d-flex align-items-end' style={overlayStyle}>
-                                                        {news.title}
+                                                    <Card.ImgOverlay className="d-flex justify-content-end flex-column" style={overlayStyle}>
+                                                        <Card.Text>{news.title}</Card.Text>
                                                         <br />
-                                                        {news.publisher.name}
-                                                        <br />
-                                                        {news.datetime}
+                                                        <Row className='d-flex justify-content-between'>
+                                                            <Col>
+                                                                {news.publisher.name}
+                                                            </Col>
+                                                            <Col>
+                                                                {news.datetime}
+                                                            </Col>
+                                                        </Row>
                                                     </Card.ImgOverlay>
                                                 </Card>
                                             </Col>
                                         ) : index === 4 ?
                                             (
-                                                <Col className='mt-4 col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 text-white'>
+                                                <Col key={news.id}>
                                                     <Card>
                                                         <Card.Img variant="top" src={news.image} />
-                                                        <Card.ImgOverlay className='d-flex align-items-end' style={overlayStyle}>
-                                                            {news.title}
+                                                        <Card.ImgOverlay className="d-flex justify-content-end flex-column" style={overlayStyle}>
+                                                            <Card.Text>{news.title}</Card.Text>
                                                             <br />
-                                                            {news.publisher.name}
-                                                            <br />
-                                                            {news.datetime}
+                                                            <Row className='d-flex justify-content-between'>
+                                                                <Col>
+                                                                    {news.publisher.name}
+                                                                </Col>
+                                                                <Col>
+                                                                    {news.datetime}
+                                                                </Col>
+                                                            </Row>
                                                         </Card.ImgOverlay>
                                                     </Card>
                                                 </Col>
                                             ) : index === 5 ?
                                                 (
-                                                    <Col className='mt-4 col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 text-white'>
+                                                    <Col key={news.id} >
                                                         <Card>
                                                             <Card.Img variant="top" src={news.image} />
-                                                            <Card.ImgOverlay className='d-flex align-items-end' style={overlayStyle}>
-                                                                {news.title}
+                                                            <Card.ImgOverlay className="d-flex justify-content-end flex-column" style={overlayStyle}>
+                                                                <Card.Text>{news.title}</Card.Text>
                                                                 <br />
-                                                                {news.publisher.name}
-                                                                <br />
-                                                                {news.datetime}
+                                                                <Row className='d-flex justify-content-between'>
+                                                                    <Col>
+                                                                        {news.publisher.name}
+                                                                    </Col>
+                                                                    <Col>
+                                                                        {news.datetime}
+                                                                    </Col>
+                                                                </Row>
                                                             </Card.ImgOverlay>
                                                         </Card>
                                                     </Col>
