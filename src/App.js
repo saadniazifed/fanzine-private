@@ -9,6 +9,7 @@ function App() {
     <>
       <FanzineNavbar />
       <Home />
+
     </>
   );
 }

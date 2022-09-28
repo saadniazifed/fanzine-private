@@ -3,6 +3,7 @@ import { Container, Nav, Navbar } from "react-bootstrap";
 import fanzine from "assets/Images/fanzine.png";
 import styles from "components/Navbar/Navbar.module.css";
 
+
 function FanzineNavbar() {
   return (
     <Navbar bg="dark" variant="dark">
