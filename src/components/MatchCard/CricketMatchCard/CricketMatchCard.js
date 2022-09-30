@@ -1,24 +1,10 @@
 import React from 'react'
 import { Card, Col, Container, Row } from 'react-bootstrap'
 import styles from 'components/MatchCard/CricketMatchCard/CricketMatchCard.module.css'
-import { useState, useEffect } from 'react'
-import axios from 'axios'
+import useCricketMatchCard from './useCricketMatchCard'
 
 const CricketMatchCard = () => {
-    const [cricketMatch, setCricketMatch] = useState([]);
-
-    useEffect(() => {
-        axios
-            .get(
-                "https://api2.fanzine.com/api-almet/v2.0/Cricket/homePageMatches"
-            )
-            .then((res) => {
-                setCricketMatch(res.data.data);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-    }, []);
+    const cricketMatch = useCricketMatchCard()
 
     return (
         <Container fluid className={`${styles.cricketCardContainer} ${styles.overflowScrollX}`}>

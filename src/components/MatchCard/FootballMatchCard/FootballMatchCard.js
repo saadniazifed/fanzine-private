@@ -2,23 +2,10 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 import { Container, Row, Col, Card } from 'react-bootstrap';
 import styles from 'components/MatchCard/FootballMatchCard/FootballMatchCard.module.css'
+import useFootballMatchCard from './hooks/useFootballMatchCard';
 
 const FootballMatchCard = () => {
-    const [footballMatch, setFootballMatch] = useState([]);
-
-    useEffect(() => {
-        axios
-            .get(
-                "https://api2.fanzine.com/api-almet/v2.0/Football/homePageMatches"
-            )
-            .then((res) => {
-                setFootballMatch(res.data.data);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-    }, []);
-
+    const footballMatch = useFootballMatchCard()
 
     return (
 

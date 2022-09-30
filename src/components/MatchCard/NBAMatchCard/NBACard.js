@@ -1,23 +1,10 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios';
+import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import styles from 'components/MatchCard/NBAMatchCard/NBACard.module.css'
+import useNBAMatchCard from './hooks/useNBAMatchCard';
 
 const NBAMatchCard = () => {
-    const [nbaCard, setNBACard] = useState([]);
-
-    useEffect(() => {
-        axios
-            .get(
-                "https://api2.fanzine.com/api-almet/v2.0/NBA/homePageMatches"
-            )
-            .then((res) => {
-                setNBACard(res.data.data);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-    }, []);
+    const nbaCard = useNBAMatchCard()
 
     return (
         <Container className={`${styles.nbaContainer}`}>
