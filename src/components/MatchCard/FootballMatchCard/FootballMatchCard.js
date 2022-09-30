@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Container, Row, Col, Card } from 'react-bootstrap';
 import styles from 'components/MatchCard/FootballMatchCard/FootballMatchCard.module.css'
 import useFootballMatchCard from './hooks/useFootballMatchCard';
+import moment from 'moment';
 
 const FootballMatchCard = () => {
     const footballMatch = useFootballMatchCard()
@@ -20,8 +21,12 @@ const FootballMatchCard = () => {
                                 <Container className='h-100 d-flex flex-column justify-content-center align-items-center'>
                                     <Row>
                                         <Col>
-                                            <Card.Text>
-                                                {data.datetime.slice(10)}
+                                            <Card.Text className='mb-3'>
+                                                {
+                                                    moment(data.datetime.slice(0, -8)).format('dddd, MMMM Do YYYY')
+                                                }
+                                                {/* {data.datetime.slice(10)
+                                                } */}
                                             </Card.Text>
                                         </Col>
                                     </Row>
@@ -33,7 +38,7 @@ const FootballMatchCard = () => {
                                             </Card.Text>
                                         </Col>
 
-                                        <Col className={`${styles.matchBeginsBorder}`}>
+                                        <Col className={`${styles.matchBeginsBorder} mb-2`}>
                                             <Card.Text>
                                                 {data.time_begin}
                                             </Card.Text>
