@@ -4,22 +4,36 @@ import { Container, Row, Col, Card } from 'react-bootstrap';
 import CricketNews from 'components/NewsCard/CricketNews/CricketNewsCard';
 import CricketMatchCard from 'components/MatchCard/CricketMatchCard/CricketMatchCard';
 import moment from 'moment';
+import useCricketData from './hooks/useCricketData';
 
 const Cricket = () => {
-    const [cricketMatch, setCricketMatch] = useState([])
+    const cricketMatch = useCricketData()
 
-    useEffect(() => {
-        axios
-            .get(
-                "https://api2.fanzine.com/api-almet/v2.0/Cricket/news?limit=48&page=1"
-            )
-            .then((res) => {
-                setCricketMatch(res.data);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-    }, []);
+    const style = {
+        container: {
+            maxHeight: "400px",
+            marginBottom: "1rem",
+            textAlign: "left",
+            fontSize: "12px",
+            border: "0px"
+        },
+        topCard: {
+            objectFit: "cover",
+            height: "250px",
+            marginBottom: "0.2rem"
+        },
+        leftAlignRow: {
+            width: "100%",
+            textAlign: "left",
+        },
+        fivePixelGap: {
+            gap: "5px"
+        },
+        publisherIcon: {
+            height: "15px",
+            width: "15px"
+        }
+    }
 
     return (
         <>
@@ -32,39 +46,17 @@ const Cricket = () => {
                         cricketMatch.map(data => {
                             return (
                                 <Col>
-                                    <Card style={{
-                                        maxHeight: "400px",
-                                        marginBottom: "1rem",
-                                        textAlign: "left",
-                                        fontSize: "12px",
-                                        border: "0px"
-                                    }}>
-
+                                    <Card style={style.container}>
                                         <Card.Img variant="top" src={data.image}
-                                            style={{
-                                                objectFit: "cover",
-                                                height: "250px",
-                                                marginBottom: "0.2rem"
-                                            }}
+                                            style={style.topCard}
                                         />
-
                                         <Card.Text className='text-left'>
                                             {data.title}
                                         </Card.Text>
                                         <br />
-                                        <Row style={{
-                                            width: "100%",
-                                            textAlign: "left",
-                                        }}
-                                            className='float-end'
-                                        >
-                                            <Col className="d-flex" style={{
-                                                gap: "5px"
-                                            }}>
-                                                <img src={data.publisher.icon} alt="publisher icon" style={{
-                                                    height: "15px",
-                                                    width: "15px"
-                                                }} />
+                                        <Row style={style.leftAlignRow} className='float-end'>
+                                            <Col className="d-flex" style={style.fivePixelGap}>
+                                                <img src={data.publisher.icon} alt="publisher icon" style={style.publisherIcon} />
                                                 {data.publisher.name}
                                             </Col>
                                             <Col className="text-end">
