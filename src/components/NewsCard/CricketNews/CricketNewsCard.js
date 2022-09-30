@@ -118,6 +118,7 @@ export default function CricketNews() {
                                                         </Card.ImgOverlay>
                                                     </Card>
                                                 </Col>
+
                                                 <Col className='mt-2 pt-1 col-12'></Col>
                                             </>
                                         ) :

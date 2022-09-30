@@ -126,9 +126,7 @@ export default function MLBNews() {
                                                         <Card.Text>{news.title}</Card.Text>
                                                         <br />
                                                         <Row className='d-flex justify-content-between' style={style.footerCardText}>
-                                                            <Col className="d-flex" style={{
-                                                                gap: "5px"
-                                                            }}>
+                                                            <Col className="d-flex" style={style.fivePixelGap}>
                                                                 <img src={news.publisher.icon} alt="publisher icon" style={style.publisherIcon} />
                                                                 {news.publisher.name}
                                                             </Col>
@@ -177,7 +175,7 @@ export default function MLBNews() {
                                                 <Col className='mt-4 text-white '>
                                                     <Card>
                                                         <Card.Img variant="top" src={news.image}
-                                                            style={style.indexThreeImage}
+                                                            style={style.indexFourImage}
                                                         />
                                                         <Card.ImgOverlay className="d-flex justify-content-end flex-column" style={style.overlayStyle}>
                                                             <Card.Text>{news.title}</Card.Text>
@@ -199,7 +197,7 @@ export default function MLBNews() {
                                                     <Col className='mt-4 text-white '>
                                                         <Card>
                                                             <Card.Img variant="top" src={news.image}
-                                                                style={style.indexThreeImage}
+                                                                style={style.indexFiveImage}
                                                             />
                                                             <Card.ImgOverlay className="d-flex justify-content-end flex-column" style={style.overlayStyle}>
                                                                 <Card.Text>{news.title}</Card.Text>
