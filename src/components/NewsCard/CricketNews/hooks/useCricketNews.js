@@ -1,23 +1,23 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 
-const useNBAData = () => {
-    const [nbaMatch, setNBAMatch] = useState([])
+const useCricketNews = () => {
+    const [cricketNews, setCricketNews] = useState([]);
 
     useEffect(() => {
         axios
             .get(
-                "https://api2.fanzine.com/api-almet/v2.0/NBA/news?limit=48&page=1"
+                "https://api2.fanzine.com/api-almet/v2.0/Cricket/news?limit=6&page=1"
             )
             .then((res) => {
-                setNBAMatch(res.data);
+                setCricketNews(res.data);
             })
             .catch((err) => {
                 console.log(err);
             });
     }, []);
 
-    return nbaMatch
+    return cricketNews
 }
 
-export default useNBAData
+export default useCricketNews

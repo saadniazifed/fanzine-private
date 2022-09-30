@@ -2,35 +2,58 @@ import { Container } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
-import sample from 'assets/Images/fanzine.png'
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React from "react";
 import moment from 'moment';
-
+import useCricketNews from './hooks/useCricketNews';
 
 
 export default function CricketNews() {
-    const [cricketNews, setCricketNews] = useState([]);
+    const cricketNews = useCricketNews()
 
-    useEffect(() => {
-        axios
-            .get(
-                "https://api2.fanzine.com/api-almet/v2.0/Cricket/news?limit=6&page=1"
-            )
-            .then((res) => {
-                setCricketNews(res.data);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-    }, []);
-
-    const overlayStyle = {
-        position: 'absolute',
-        backgroundColor: 'rgba(0, 0, 0, 0.5)',
-        padding: '5px 15px',
-        color: 'white',
-        borderRadius: 3,
+    const style = {
+        overlayStyle: {
+            position: 'absolute',
+            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+            padding: '5px 15px',
+            color: 'white',
+            borderRadius: 3,
+        },
+        footerCardText: {
+            textAlign: "left",
+            fontSize: "10px"
+        },
+        fivePixelGap: {
+            gap: "5px"
+        },
+        publisherIcon: {
+            height: "15px",
+            width: "15px"
+        },
+        indexOneColumn: {
+            width: "auto",
+            maxHeight: "250px",
+            color: "white"
+        },
+        indexOneImage: {
+            width: "100%",
+            height: "auto"
+        },
+        whiteText: {
+            color: "white"
+        },
+        indexTwoImage: {
+            height: "225px",
+            objectFit: 'cover'
+        },
+        indexThreeImage: {
+            height: "250px"
+        },
+        indexFourImage: {
+            height: "250px"
+        },
+        indexFiveImage: {
+            height: "250px"
+        }
     }
 
     return (
@@ -45,26 +68,13 @@ export default function CricketNews() {
                                     (
                                         <Card>
                                             <Card.Img variant="top" src={news.image} />
-                                            <Card.ImgOverlay className="d-flex justify-content-end flex-column" style={overlayStyle}>
-                                                <Card.Text
-                                                    style={{
-                                                        textAlign: 'left'
-                                                    }}
-                                                >{news.title}</Card.Text>
+                                            <Card.ImgOverlay className="d-flex justify-content-end flex-column" style={style.overlayStyle}>
+                                                <Card.Text className='text-start'>{news.title}</Card.Text>
                                                 <br />
-                                                <Row
-                                                    style={{
-                                                        textAlign: "left",
-                                                        fontSize: "10px"
-                                                    }}
-                                                >
-                                                    <Col className="d-flex" style={{
-                                                        gap: "5px"
-                                                    }}>
-                                                        <img src={news.publisher.icon} alt="publisher icon" style={{
-                                                            height: "15px",
-                                                            width: "15px"
-                                                        }} />
+                                                <Row style={style.footerCardText}>
+                                                    <Col className="d-flex" style={style.fivePixelGap}>
+                                                        <img src={news.publisher.icon} alt="publisher icon"
+                                                            style={style.publisherIcon} />
                                                         {news.publisher.name}
                                                     </Col>
                                                     <Col className="text-end">
@@ -85,25 +95,20 @@ export default function CricketNews() {
                                     index === 1 ?
                                         (
                                             <>
-                                                <Col md={7} style={{ width: "auto", maxHeight: "250px", color: "white" }}>
+                                                <Col md={7} style={style.indexOneColumn}>
                                                     <Card>
-                                                        <Card.Img variant="top" src={news.image} style={{ width: "100%", height: "auto" }} />
-                                                        <Card.ImgOverlay className="d-flex justify-content-end flex-column" style={overlayStyle}>
+                                                        <Card.Img variant="top" src={news.image}
+                                                            style={style.indexOneImage} />
+                                                        <Card.ImgOverlay className="d-flex justify-content-end flex-column" style={style.overlayStyle}>
                                                             <Card.Text>{news.title}</Card.Text>
                                                             <br />
                                                             <Row
-                                                                style={{
-                                                                    textAlign: "left",
-                                                                    fontSize: "10px"
-                                                                }}
+                                                                style={style.footerCardText}
                                                             >
                                                                 <Col className="d-flex" style={{
                                                                     gap: "5px"
                                                                 }}>
-                                                                    <img src={news.publisher.icon} alt="publisher icon" style={{
-                                                                        height: "15px",
-                                                                        width: "15px"
-                                                                    }} />
+                                                                    <img src={news.publisher.icon} alt="publisher icon" style={style.publisherIcon} />
                                                                     {news.publisher.name}
                                                                 </Col>
                                                                 <Col className="text-end">
@@ -115,31 +120,18 @@ export default function CricketNews() {
                                                 </Col>
                                                 <Col className='mt-2 pt-1 col-12'></Col>
                                             </>
-                                        ) : index === 2 ? (
-                                            <Col md={7} 
-                                                className="w-100"
-                                            >
-                                                <Card style={{ color: "white" }}>
-                                                    <Card.Img variant="top" src={news.image} style={{
-                                                        height: "225px",
-                                                        objectFit: 'cover'
-                                                    }} />
-                                                    <Card.ImgOverlay className="d-flex justify-content-end flex-column" style={overlayStyle}>
+                                        ) :
+                                        index === 2 ? (
+                                            <Col md={7} className="w-100">
+                                                <Card style={style.whiteText}>
+                                                    <Card.Img variant="top" src={news.image}
+                                                        style={style.indexTwoImage} />
+                                                    <Card.ImgOverlay className="d-flex justify-content-end flex-column" style={style.overlayStyle}>
                                                         <Card.Text>{news.title}</Card.Text>
                                                         <br />
-                                                        <Row
-                                                            style={{
-                                                                textAlign: "left",
-                                                                fontSize: "10px"
-                                                            }}
-                                                        >
-                                                            <Col className="d-flex" style={{
-                                                                gap: "5px"
-                                                            }}>
-                                                                <img src={news.publisher.icon} alt="publisher icon" style={{
-                                                                    height: "15px",
-                                                                    width: "15px"
-                                                                }} />
+                                                        <Row style={style.footerCardText}>
+                                                            <Col className="d-flex" style={style.fivePixelGap}>
+                                                                <img src={news.publisher.icon} alt="publisher icon" style={style.footerCardText} />
                                                                 {news.publisher.name}
                                                             </Col>
                                                             <Col className="text-end">
@@ -164,25 +156,14 @@ export default function CricketNews() {
                                         (
                                             <Col className='mt-4 col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 text-white'>
                                                 <Card>
-                                                    <Card.Img variant="top" src={news.image} style={{
-                                                        height: "250px"
-                                                    }} />
-                                                    <Card.ImgOverlay className="d-flex justify-content-end flex-column" style={overlayStyle}>
+                                                    <Card.Img variant="top" src={news.image}
+                                                        style={style.indexThreeImage} />
+                                                    <Card.ImgOverlay className="d-flex justify-content-end flex-column" style={style.overlayStyle}>
                                                         <Card.Text>{news.title}</Card.Text>
                                                         <br />
-                                                        <Row
-                                                            style={{
-                                                                textAlign: "left",
-                                                                fontSize: "10px"
-                                                            }}
-                                                        >
-                                                            <Col className="d-flex" style={{
-                                                                gap: "5px"
-                                                            }}>
-                                                                <img src={news.publisher.icon} alt="publisher icon" style={{
-                                                                    height: "15px",
-                                                                    width: "15px"
-                                                                }} />
+                                                        <Row style={style.footerCardText} >
+                                                            <Col className="d-flex" style={style.fivePixelGap}>
+                                                                <img src={news.publisher.icon} alt="publisher icon" style={style.publisherIcon} />
                                                                 {news.publisher.name}
                                                             </Col>
                                                             <Col className="text-end">
@@ -196,25 +177,14 @@ export default function CricketNews() {
                                             (
                                                 <Col className='mt-4 col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 text-white'>
                                                     <Card>
-                                                        <Card.Img variant="top" src={news.image} style={{
-                                                            height: "250px"
-                                                        }} />
-                                                        <Card.ImgOverlay className="d-flex justify-content-end flex-column" style={overlayStyle}>
+                                                        <Card.Img variant="top" src={news.image}
+                                                            style={style.indexFourImage} />
+                                                        <Card.ImgOverlay className="d-flex justify-content-end flex-column" style={style.overlayStyle}>
                                                             <Card.Text>{news.title}</Card.Text>
                                                             <br />
-                                                            <Row
-                                                                style={{
-                                                                    textAlign: "left",
-                                                                    fontSize: "10px"
-                                                                }}
-                                                            >
-                                                                <Col className="d-flex" style={{
-                                                                    gap: "5px"
-                                                                }}>
-                                                                    <img src={news.publisher.icon} alt="publisher icon" style={{
-                                                                        height: "15px",
-                                                                        width: "15px"
-                                                                    }} />
+                                                            <Row style={style.footerCardText} >
+                                                                <Col className="d-flex" style={style.fivePixelGap}>
+                                                                    <img src={news.publisher.icon} alt="publisher icon" style={style.publisherIcon} />
                                                                     {news.publisher.name}
                                                                 </Col>
                                                                 <Col className="text-end">
@@ -228,25 +198,14 @@ export default function CricketNews() {
                                                 (
                                                     <Col className='mt-4 col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 text-white' >
                                                         <Card>
-                                                            <Card.Img variant="top" src={news.image} style={{
-                                                                height: "250px"
-                                                            }} />
-                                                            <Card.ImgOverlay className="d-flex justify-content-end flex-column" style={overlayStyle}>
+                                                            <Card.Img variant="top" src={news.image}
+                                                                style={style.indexFiveImage} />
+                                                            <Card.ImgOverlay className="d-flex justify-content-end flex-column" style={style.overlayStyle}>
                                                                 <Card.Text>{news.title}</Card.Text>
                                                                 <br />
-                                                                <Row
-                                                                    style={{
-                                                                        textAlign: "left",
-                                                                        fontSize: "10px"
-                                                                    }}
-                                                                >
-                                                                    <Col className="d-flex" style={{
-                                                                        gap: "5px"
-                                                                    }}>
-                                                                        <img src={news.publisher.icon} alt="publisher icon" style={{
-                                                                            height: "15px",
-                                                                            width: "15px"
-                                                                        }} />
+                                                                <Row style={style.footerCardText} >
+                                                                    <Col className="d-flex" style={style.fivePixelGap}>
+                                                                        <img src={news.publisher.icon} alt="publisher icon" style={style.publisherIcon} />
                                                                         {news.publisher.name}
                                                                     </Col>
                                                                     <Col className="text-end">
