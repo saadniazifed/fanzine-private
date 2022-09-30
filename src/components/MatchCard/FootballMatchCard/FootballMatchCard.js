@@ -25,8 +25,7 @@ const FootballMatchCard = () => {
                                                 {
                                                     moment(data.datetime.slice(0, -8)).format('dddd, MMMM Do YYYY')
                                                 }
-                                                {/* {data.datetime.slice(10)
-                                                } */}
+
                                             </Card.Text>
                                         </Col>
                                     </Row>
