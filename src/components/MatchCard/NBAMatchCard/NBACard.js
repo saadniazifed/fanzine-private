@@ -12,7 +12,6 @@ const NBAMatchCard = () => {
                 "https://api2.fanzine.com/api-almet/v2.0/NBA/homePageMatches"
             )
             .then((res) => {
-                console.log(res.data.data);
                 setNBACard(res.data.data);
             })
             .catch((err) => {
@@ -28,7 +27,7 @@ const NBAMatchCard = () => {
                         data.matches.map(nbaData => {
                             return (
                                 <>
-                                    <Container className='d-flex flex-column mt-2' key={nbaData.id} >
+                                    <Container className='d-flex flex-column mt-2' >
                                         <Container>
 
                                             <Row className='pt-2 mt-4'>

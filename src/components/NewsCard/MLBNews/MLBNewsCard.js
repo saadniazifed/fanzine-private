@@ -4,6 +4,7 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import moment from 'moment';
 
 
 
@@ -16,7 +17,6 @@ export default function MLBNews() {
                 "https://api2.fanzine.com/api-almet/v2.0/MLB/news?limit=6&page=1"
             )
             .then((res) => {
-                console.log(res.data);
                 setMlbNews(res.data);
             })
             .catch((err) => {
@@ -42,17 +42,28 @@ export default function MLBNews() {
                             {mlbNews.map((news, index) => (
                                 index === 0 ?
                                     (
-                                        <Card key={news.id}>
+                                        <Card >
                                             <Card.Img variant="top" src={news.image} />
                                             <Card.ImgOverlay className="d-flex justify-content-end flex-column" style={overlayStyle}>
                                                 <Card.Text>{news.title}</Card.Text>
                                                 <br />
-                                                <Row className='d-flex justify-content-between'>
-                                                    <Col>
+                                                <Row
+                                                    style={{
+                                                        textAlign: "left",
+                                                        fontSize: "10px"
+                                                    }}
+                                                >
+                                                    <Col className="d-flex" style={{
+                                                        gap: "5px"
+                                                    }}>
+                                                        <img src={news.publisher.icon} alt="publisher icon" style={{
+                                                            height: "15px",
+                                                            width: "15px"
+                                                        }} />
                                                         {news.publisher.name}
                                                     </Col>
-                                                    <Col>
-                                                        {news.datetime}
+                                                    <Col className="text-end">
+                                                        {moment(`${news.datetime}`).fromNow()}
                                                     </Col>
                                                 </Row>
                                             </Card.ImgOverlay>
@@ -69,18 +80,31 @@ export default function MLBNews() {
                                     index === 1 ?
                                         (
                                             <>
-                                                <Col md={7} style={{ width: "100%", color: "white" }} key={news.id}>
+                                                <Col md={7} style={{ width: "100%", color: "white" }} >
                                                     <Card>
-                                                        <Card.Img variant="top" src={news.image} />
+                                                        <Card.Img variant="top" src={news.image} style={{
+                                                            height: "270px",
+                                                        }} />
                                                         <Card.ImgOverlay className="d-flex justify-content-end flex-column" style={overlayStyle}>
                                                             <Card.Text>{news.title}</Card.Text>
                                                             <br />
-                                                            <Row className='d-flex justify-content-between'>
-                                                                <Col>
+                                                            <Row
+                                                                style={{
+                                                                    textAlign: "left",
+                                                                    fontSize: "10px"
+                                                                }}
+                                                            >
+                                                                <Col className="d-flex" style={{
+                                                                    gap: "5px"
+                                                                }}>
+                                                                    <img src={news.publisher.icon} alt="publisher icon" style={{
+                                                                        height: "15px",
+                                                                        width: "15px"
+                                                                    }} />
                                                                     {news.publisher.name}
                                                                 </Col>
-                                                                <Col>
-                                                                    {news.datetime}
+                                                                <Col className="text-end">
+                                                                    {moment(`${news.datetime}`).fromNow()}
                                                                 </Col>
                                                             </Row>
                                                         </Card.ImgOverlay>
@@ -91,19 +115,32 @@ export default function MLBNews() {
                                         ) : index === 2 ? (
                                             <Col md={7}
                                                 style={{ width: "100%" }}
-                                                key={news.id}
+
                                             >
                                                 <Card>
-                                                    <Card.Img variant="top" src={news.image} />
+                                                    <Card.Img variant="top" src={news.image} style={{
+                                                        height: "270px",
+                                                    }} />
                                                     <Card.ImgOverlay className="d-flex justify-content-end flex-column" style={overlayStyle}>
                                                         <Card.Text>{news.title}</Card.Text>
                                                         <br />
-                                                        <Row className='d-flex justify-content-between'>
-                                                            <Col>
+                                                        <Row
+                                                            style={{
+                                                                textAlign: "left",
+                                                                fontSize: "10px"
+                                                            }}
+                                                        >
+                                                            <Col className="d-flex" style={{
+                                                                gap: "5px"
+                                                            }}>
+                                                                <img src={news.publisher.icon} alt="publisher icon" style={{
+                                                                    height: "15px",
+                                                                    width: "15px"
+                                                                }} />
                                                                 {news.publisher.name}
                                                             </Col>
-                                                            <Col>
-                                                                {news.datetime}
+                                                            <Col className="text-end">
+                                                                {moment(`${news.datetime}`).fromNow()}
                                                             </Col>
                                                         </Row>
                                                     </Card.ImgOverlay>
@@ -122,18 +159,31 @@ export default function MLBNews() {
                                 {mlbNews.map((news, index) => (
                                     index === 3 ?
                                         (
-                                            <Col key={news.id}>
+                                            <Col >
                                                 <Card>
-                                                    <Card.Img variant="top" src={news.image} />
+                                                    <Card.Img variant="top" src={news.image} style={{
+                                                        height: "250px",
+                                                    }} />
                                                     <Card.ImgOverlay className="d-flex justify-content-end flex-column" style={overlayStyle}>
                                                         <Card.Text>{news.title}</Card.Text>
                                                         <br />
-                                                        <Row className='d-flex justify-content-between'>
-                                                            <Col>
+                                                        <Row
+                                                            style={{
+                                                                textAlign: "left",
+                                                                fontSize: "10px"
+                                                            }}
+                                                        >
+                                                            <Col className="d-flex" style={{
+                                                                gap: "5px"
+                                                            }}>
+                                                                <img src={news.publisher.icon} alt="publisher icon" style={{
+                                                                    height: "15px",
+                                                                    width: "15px"
+                                                                }} />
                                                                 {news.publisher.name}
                                                             </Col>
-                                                            <Col>
-                                                                {news.datetime}
+                                                            <Col className="text-end">
+                                                                {moment(`${news.datetime}`).fromNow()}
                                                             </Col>
                                                         </Row>
                                                     </Card.ImgOverlay>
@@ -141,18 +191,31 @@ export default function MLBNews() {
                                             </Col>
                                         ) : index === 4 ?
                                             (
-                                                <Col key={news.id}>
+                                                <Col >
                                                     <Card>
-                                                        <Card.Img variant="top" src={news.image} />
+                                                        <Card.Img variant="top" src={news.image} style={{
+                                                            height: "250px",
+                                                        }} />
                                                         <Card.ImgOverlay className="d-flex justify-content-end flex-column" style={overlayStyle}>
                                                             <Card.Text>{news.title}</Card.Text>
                                                             <br />
-                                                            <Row className='d-flex justify-content-between'>
-                                                                <Col>
+                                                            <Row
+                                                                style={{
+                                                                    textAlign: "left",
+                                                                    fontSize: "10px"
+                                                                }}
+                                                            >
+                                                                <Col className="d-flex" style={{
+                                                                    gap: "5px"
+                                                                }}>
+                                                                    <img src={news.publisher.icon} alt="publisher icon" style={{
+                                                                        height: "15px",
+                                                                        width: "15px"
+                                                                    }} />
                                                                     {news.publisher.name}
                                                                 </Col>
-                                                                <Col>
-                                                                    {news.datetime}
+                                                                <Col className="text-end">
+                                                                    {moment(`${news.datetime}`).fromNow()}
                                                                 </Col>
                                                             </Row>
                                                         </Card.ImgOverlay>
@@ -160,18 +223,31 @@ export default function MLBNews() {
                                                 </Col>
                                             ) : index === 5 ?
                                                 (
-                                                    <Col key={news.id} >
+                                                    <Col >
                                                         <Card>
-                                                            <Card.Img variant="top" src={news.image} />
+                                                            <Card.Img variant="top" src={news.image} style={{
+                                                                height: "250px",
+                                                            }} />
                                                             <Card.ImgOverlay className="d-flex justify-content-end flex-column" style={overlayStyle}>
                                                                 <Card.Text>{news.title}</Card.Text>
                                                                 <br />
-                                                                <Row className='d-flex justify-content-between'>
-                                                                    <Col>
+                                                                <Row
+                                                                    style={{
+                                                                        textAlign: "left",
+                                                                        fontSize: "10px"
+                                                                    }}
+                                                                >
+                                                                    <Col className="d-flex" style={{
+                                                                        gap: "5px"
+                                                                    }}>
+                                                                        <img src={news.publisher.icon} alt="publisher icon" style={{
+                                                                            height: "15px",
+                                                                            width: "15px"
+                                                                        }} />
                                                                         {news.publisher.name}
                                                                     </Col>
-                                                                    <Col>
-                                                                        {news.datetime}
+                                                                    <Col className="text-end">
+                                                                        {moment(`${news.datetime}`).fromNow()}
                                                                     </Col>
                                                                 </Row>
                                                             </Card.ImgOverlay>

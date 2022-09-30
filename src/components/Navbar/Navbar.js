@@ -2,6 +2,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import fanzine from "assets/Images/fanzine.png";
 import styles from "components/Navbar/Navbar.module.css";
+import { NavLink } from "react-router-dom";
+
 
 
 function FanzineNavbar() {
@@ -10,19 +12,20 @@ function FanzineNavbar() {
       <Container className="my-auto">
         <Navbar.Brand href="#" as="h1">
           <Container className={styles.fitImageNavbar}>
-            <img src={fanzine} alt="brand-logo" />
+            <NavLink to='/'>
+              <img src={fanzine} alt="brand-logo" />
+            </NavLink>
           </Container>
         </Navbar.Brand>
 
         <Navbar.Toggle id="basic-navbar-nav"></Navbar.Toggle>
-        <Nav className={`ms-auto justify-content-end`} >
-          <Nav.Link href="#" className="text-white">Football</Nav.Link>
-          <Nav.Link href="#" className="text-white">Cricket</Nav.Link>
-          <Nav.Link href="#" className="text-white">NFL</Nav.Link>
-          <Nav.Link href="#" className="text-white">NBA</Nav.Link>
-          <Nav.Link href="#" className="text-white">MLB</Nav.Link>
-          <Nav.Link href="#" className="text-white">NFTs</Nav.Link>
-          <Nav.Link href="#" className="text-white">Contact</Nav.Link>
+        <Nav className={`d-flex w-75 justify-content-evenly`} >
+          <NavLink to='/football' className="text-white text-decoration-none">Football</NavLink>
+          <NavLink to='/cricket' className="text-white text-decoration-none">Cricket</NavLink>
+          <NavLink to='/nba' className="text-white text-decoration-none">NBA</NavLink>
+          <NavLink to='/nfl' className="text-white text-decoration-none">NFL</NavLink>
+          <NavLink to='/mlb' className="text-white text-decoration-none">MLB</NavLink>
+          <NavLink to='/contact' className="text-white text-decoration-none">Contact</NavLink>
         </Nav>
       </Container>
     </Navbar>

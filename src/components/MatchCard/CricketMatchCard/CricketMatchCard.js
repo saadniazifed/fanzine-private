@@ -29,7 +29,7 @@ const CricketMatchCard = () => {
                             {data.matches.map((matchData) => {
                                 return (
                                     <Card className={`${styles.cricketCards}`}>
-                                        <Container className="text-white" key={matchData.id}>
+                                        <Container className="text-white" >
 
                                             <Card.Text>
                                                 <Row className='pb-3 p-4'>
@@ -37,7 +37,7 @@ const CricketMatchCard = () => {
                                                 </Row>
                                             </Card.Text>
                                             <Container>
-                                                <Container className='d-flex' key={matchData.id}>
+                                                <Container className='d-flex' >
                                                     <Container>
                                                         <Row>
                                                             <Card.Text className='d-flex'>
@@ -64,7 +64,7 @@ const CricketMatchCard = () => {
                                                         </Row>
                                                     </Container>
                                                 </Container>
-                                                <Container key={matchData.id}>
+                                                <Container>
                                                     <Col className='col-12 float-end pt-3'>
                                                         <Card.Text>
                                                             {matchData.series.name}

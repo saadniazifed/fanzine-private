@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
-import 'components/MatchCard/FootballMatchCard/FootballMatchCard.module.css'
 import { Container, Row, Col, Card } from 'react-bootstrap';
 import styles from 'components/MatchCard/FootballMatchCard/FootballMatchCard.module.css'
 
@@ -13,7 +12,6 @@ const FootballMatchCard = () => {
                 "https://api2.fanzine.com/api-almet/v2.0/Football/homePageMatches"
             )
             .then((res) => {
-                console.log(res.data.data);
                 setFootballMatch(res.data.data);
             })
             .catch((err) => {
@@ -29,7 +27,7 @@ const FootballMatchCard = () => {
             {
                 footballMatch.map(data => {
                     return (
-                        <Card className={`${styles.matchCards}`} key={data.id}>
+                        <Card className={`${styles.matchCards}`} >
                             <Card.Img variant='top' src={data.venue.stadium_image} />
                             <Card.ImgOverlay className={`${styles.imageOverlay}`} >
                                 <Container className='h-100 d-flex flex-column justify-content-center align-items-center'>
